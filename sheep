@@ -1,0 +1,28 @@
+#!/bin/sh
+#=================HEADER================================|
+#AUTHOR
+# Jefferson Rocha <root@slackjeff.com.br>
+#
+#
+# Alternative gksu(do)
+#=======================================================|
+
+_HELP()
+{
+    echo '
+Sheep - Alternative gksu(do)
+
+USAGE
+
+  Use *ABSOLUTE* paths, example:
+   sheep /usr/bin/program.sh
+   sheep "/usr/bin/apt install $@"
+   sheep /usr/local/bin/youtube-dl "$@"
+'
+    return 0
+}
+
+[ "$1" ] || { _HELP; exit 1 ;}
+
+# Execute.
+pkexec "$1" "$@"
